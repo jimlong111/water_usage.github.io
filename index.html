@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<style>
+    body {
+        background-color: linen;
+        margin: 200px;
+
+    }
+
+    input {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        color: black;
+    }
+
+    .button {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        background-color: #061C2B;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 5px 10px;
+	margin-top: 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+    }
+
+    .label {
+        text-align: center;
+        text-transform: uppercase;
+        color: #061C2B;
+        left:20pc;
+    }
+
+    p {
+	text-align: center;
+    }
+
+    #calculated {
+        font-size: 150%;
+        text-align: center;
+        color: #061C2B;
+    }
+</style>
+
+<head>
+    <title>Group 4 Project</title>
+</head>
+
+<body>
+    <script>
+        function calculate() {
+            const x = document.getElementById("time").value;
+	    const w = document.getElementById("week").value;
+	    if (x.length == 0) {
+		alert("You didn't enter the amount of time you need for shower.");
+		return;
+            }
+	    if (w.length == 0) {
+		alert("You didn't enter how many times you shower per week.");
+		return;
+	    }
+	    if ((x <= 0) || (w <= 0)) {
+		alert("Please enter a valid number!")
+		return;
+	    }
+	    const perShower = x * 2.41;
+            document.getElementById("calculated").textContent = "You use " + String(perShower) + " gallons of water per shower.\nAnd " + String(perShower * w) + " gallons of water per week.";
+        }
+    </script>
+    <h2 class="label">Water Usage Calculator</h2><br />
+    <p>Enter The Amount of Time You Need For Shower (in Minutes):</p>
+    <input type="number" id="time" name="number" required minlength="4" maxlength="8" size="10"></input>
+    <br />
+    <p>Enter how many times you shower per week:</p>
+    <input type="number" id="week" name="number" required minlength="4" maxlength="8" size="10"></input>
+    <br />
+    <input type="button" class="button" id="submit" onclick="calculate()" value="Submit">
+    <p id="calculated"></p>
+</body>
+
+</html>
